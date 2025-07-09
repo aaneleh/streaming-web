@@ -11,7 +11,6 @@ import Dvd from '../../components/Dvd'
 
 function Home() {
 
-
   const fakeData = [
     {
     'name': 'ReflexoesDeUmLiquidificador',
@@ -42,7 +41,7 @@ function Home() {
   const [currentMovieId, setCurrentMovieId] = useState(1)
   
   return (
-    <section style={{'backgroundColor': fakeData[currentMovieId].bgColor}}>
+    <section className='home' style={{'backgroundColor': fakeData[currentMovieId].bgColor}}>
       <img src={fakeData[currentMovieId].poster} className="poster"/>
 
       <div className="content">
@@ -65,8 +64,6 @@ function Home() {
                 return <div onClick={(()=> setCurrentMovieId(index))}>
                     <Dvd  logo={el.logo} color={el.bgColor} status={index == currentMovieId}></Dvd>
                   </div>
-                
-                
               }))
             }
         </div>
