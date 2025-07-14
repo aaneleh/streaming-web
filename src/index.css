@@ -36,4 +36,40 @@
   padding: 10px 20px;
   display: flex;
   cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* FORM */
+.form-item{
+  position: relative;
+  margin-top: 20px;
+}
+input {
+  border-bottom: 2px solid #fff;
+  outline: none;
+}
+input::placeholder{
+  opacity: 0; 
+  transition: opacity 200ms ease;
+}
+label {
+  pointer-events: none;
+  position: absolute;
+  text-transform: uppercase;
+/*   top: 0px; 
+  font-size: medium;
+*/
+  top: -18px;
+  font-size: small;
+  transition: top 200ms ease-out;
+}
+
+.form-item:has(input:focus) label,
+.form-item.filled label{
+  top: -18px;
+  font-size: small;
+}
+
+.form-item:has(input:focus) input::placeholder{
+  opacity: 1; 
 }

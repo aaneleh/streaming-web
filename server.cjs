@@ -22,10 +22,17 @@ const connection = mysql.createConnection({
 connection.connect()
 
 //LOGIN
+app.get('/login', async(req, res) => {
+
+    return res.status(200).json({message: 'Login realizado com sucesso'})
+})
+
 app.post('/login', async(req, res) => {
 
     let user_name = req.body.user_name
     let passwordBody = req.body.password
+
+    console.log(user_name)
     
     connection.query('SELECT * FROM user WHERE name = ?', [user_name], function (error, results, fields) {
 

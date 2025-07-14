@@ -1,0 +1,22 @@
+.login {
+    width: 100%;
+    min-height: 100dvh;
+    background-image: url(../../assets/roomBg.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #000;
+}
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20dvh;
+    gap: 40px;
+}
+
+.login-title {
+    text-transform: uppercase;
+    font-size: large;
+}

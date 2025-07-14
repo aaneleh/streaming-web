@@ -8,6 +8,11 @@ import { globalIgnores } from 'eslint/config'
 export default tseslint.config([
   globalIgnores(['dist']),
   {
+    env: {
+      browser: true, 
+      es2020: true, 
+      'node':true 
+    },
     files: ['**/*.{ts,tsx}'],
     extends: [
       js.configs.recommended,
