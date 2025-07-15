@@ -3,7 +3,6 @@ const router = express.Router()
 const mysql = require('mysql2')
 const CryptoJS = require("crypto-js")
 const { v4: uuidv4 } = require('uuid')
-const { redirect } = require('react-router')
 
 const connection = mysql.createConnection({
     host: process.env.HOST,

@@ -4,7 +4,7 @@ const cors = require('cors')
 const mysql = require('mysql2')
 const CryptoJS = require("crypto-js")
 const userRouter = require('./routes/user.cjs')
-const movieRouter = require('./routes/movie.cjs')
+const mediaRouter = require('./routes/media.cjs')
 
 const app = express()
 
@@ -57,6 +57,6 @@ app.post('/login', async(req, res) => {
 })
 
 app.use('/user', userRouter)
-app.use('/movie', movieRouter)
+app.use('/media', mediaRouter)
 
 app.listen(process.env.PORT, () => console.log(`Server iniciado na porta ${process.env.PORT}`))
