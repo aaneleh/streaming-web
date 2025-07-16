@@ -1,76 +1,90 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { CgPlayButton } from "react-icons/cg"
-import poster from '../../assets/poster-reflexoesDeUmLiquidificador.jpg'
-import posterAngel from '../../assets/poster-angelsEgg.jpg'
-import posterBlue from '../../assets/poster-perfectBlue.jpg'
-import logo from '../../assets/logo-reflexoesDeUmLiquidificador.png'
-import logoAngel from '../../assets/logo-angelsEgg.png'
-import logoBlue from '../../assets/logo-perfectBlue.png'
 import './index.css'
 import Dvd from '../../components/Dvd'
+import axios from 'axios'
+
+type Media = {
+  background_color: string,
+  description: string,
+  font_color: string,
+  headliner: boolean,
+  logo: string,
+  media_id: string,
+  name: string,
+  poster:string,
+  source: string,
+  type: number,
+}
 
 function Home() {
 
-  const fakeData = [
-    {
-    'name': 'ReflexoesDeUmLiquidificador',
-    'poster': poster,
-    'logo': logo,
-    'fontColor': '#000206',
-    'bgColor': '#FF7616',
-    'description': "O filme acompanha Elvira, uma dona de casa, busca entender o misterioso desaparecimento de seu marido, Onofre, enquanto a história do casal é narrada de forma surreal por um liquidificador, que ganhou vida após uma modificação peculiar no passado."
-    },
-      {
-    'name': 'AngelsEgg',
-    'poster': posterAngel,
-    'logo': logoAngel,
-    'fontColor': '#92713C',
-    'bgColor': '#0D0F02',
-    'description': "Angel's Egg, ou \"Tenshi no Tamago\" no original japonês, é um filme de animação dirigido por Mamoru Oshii e lançado em 1985. Este filme é frequentemente descrito como uma obra de arte surrealista e é conhecido por sua narrativa enigmática e visualmente impressionante."
-    },
-      {
-    'name': 'PerfectBlue',
-    'poster': posterBlue,
-    'logo': logoBlue,
-    'fontColor': '#FFFFFF',
-    'bgColor': '#1A365E',
-    'description': "Perfect Blue é uma animação japonesa de suspense psicológico, dirigido por Satoshi Kon, e baseado no romance do mesmo nome de Yoshikazu Takeuchi."
+  const [medias, setMedias] = useState<[Media]>();
+  const [currentMediaId, setCurrentMediaId] = useState(0)
+
+  const API =  import.meta.env.VITE_API
+
+  useEffect(()=> {
+
+    const getHeadliners = async() => {
+      try{
+        const res = await axios.get(`${API}/media/headliners`)
+        
+        const json = await res.data
+
+        console.log(json)
+        setMedias(json)
+
+      } catch(err){
+        console.log('err', err.response.data.message)
+      }
     }
-  ] 
-  //ao clicar num 'botao' de selecionar o filme atualiza isso aqui, daí atualiza qual o botao ta em destaque e qual poster e desc aparece
-  const [currentMovieId, setCurrentMovieId] = useState(1)
+    
+    getHeadliners()
+
+  }, [])
+
+    
+  if(medias == null ) {
+    () => { 
+      return (<p>Nenhum filme</p>) 
+    } 
   
-  return (
-    <section className='home' style={{'backgroundColor': fakeData[currentMovieId].bgColor}}>
-      <img src={fakeData[currentMovieId].poster} className="poster"/>
+  } else {
+    
+      return (
+        <section className='home' style={{'backgroundColor': medias[currentMediaId].background_color}}>
+        <img src={`src/assets/${medias[currentMediaId].poster}`} className="poster"/>
 
-      <div className="content">
-        <header className='info'>
+        <div className="content">
+          <header className='info'>
 
-          <img src={fakeData[currentMovieId].logo} className="logo"/>
-          
-          <p className="description" style={{'color': fakeData[currentMovieId].fontColor}}>
-            {fakeData[currentMovieId].description}
-          </p>
-          
-          <a className="glass button">
-            Assistir agora <CgPlayButton className='icon'/>
-          </a>
-        </header>
+            <img src={`src/assets/${medias[currentMediaId].logo}`} className="logo"/>
+            
+            <p className="description" style={{'color': medias[currentMediaId].font_color}}>
+              {medias[currentMediaId].description}
+            </p>
+            
+            <a className="glass button">
+              Assistir agora <CgPlayButton className='icon'/>
+            </a>
+          </header>
 
-        <div className='dvds-wrapper'>
-            {
-              fakeData.map(( (el, index) => {
-                return <div onClick={(()=> setCurrentMovieId(index))}>
-                    <Dvd  logo={el.logo} color={el.bgColor} status={index == currentMovieId}></Dvd>
-                  </div>
-              }))
-            }
+          <div className='dvds-wrapper'>
+              {
+                medias == null ? '' :
+                  medias.map(( (el, index) => {
+                    return <div onClick={(()=> setCurrentMediaId(index))}>
+                        <Dvd  logo={el.logo} color={el.background_color} status={index == currentMediaId}></Dvd>
+                      </div>
+                  }))
+                }
+          </div>
         </div>
-      </div>
-
-    </section>
-  )
+      </section>
+    )
+  }
+  
 }
 
 export default Home

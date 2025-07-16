@@ -4,7 +4,7 @@ function Dvd({logo, color, status}: {logo : string, color : string, status : boo
   
   return (
     <div style={{'backgroundColor': color}} className={`dvd glass ${status ? 'active' : ''}`}>
-      <img src={logo} className="logo"/>
+      <img src={`src/assets/${logo}`} className="logo"/>
     </div>
   )
 }
