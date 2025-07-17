@@ -47,14 +47,31 @@ router.post('/', async(req, res) => {
     let background_color = req.body.background_color
     let type = req.body.type
     let headliner = req.body.headliner
+    const uid = uuidv4()
 
     connection.query('INSERT INTO media VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [uuidv4(), name, description, source, poster, logo, font_color, background_color, type, headliner], function (error, results, fields) {
+            [uid, name, description, source, poster, logo, font_color, background_color, type, headliner], function (error, results, fields) {
         if (error) {
             console.log(error)
             return res.status(500).json({message: 'Erro ao cadastrar mídia'})
         } 
-        return res.status(200).json({message: 'Mídia cadastrado com sucesso'})
+        return res.status(200).json({message: 'Mídia cadastrado com sucesso', media_id: uid})
+    }) 
+})
+
+
+//ALTERA HEADLINER
+router.patch('/:id', async(req, res) => {
+    let media_id = req.params.id
+    let headliner = req.body.headliner
+
+    connection.query('UPDATE media SET headliner = ? WHERE media_id = ?',
+            [headliner, media_id], function (error, results, fields) {
+        if (error) {
+            console.log(error)
+            return res.status(500).json({message: 'Erro ao atualizando propriedade headliner'})
+        } 
+        return res.status(200).json({message: 'Propriedade headliner atualizada com sucesso'})
     }) 
 })
 
