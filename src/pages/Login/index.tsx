@@ -1,5 +1,4 @@
 import './index.css'
-import { useEffect } from 'react'
 import { useNavigate } from "react-router";
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import axios from 'axios'
