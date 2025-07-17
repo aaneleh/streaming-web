@@ -28,10 +28,10 @@ function Catalog() {
       try{
         const res = await axios.get(`${API}/media`)
         
-        const json = await res.data
+        const data = await res.data
 
-        console.log(json)
-        setMedias(json)
+        console.log(data)
+        setMedias(data)
 
       } catch(err){
         console.log('err', err.response.data.message)
