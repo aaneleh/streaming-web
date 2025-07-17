@@ -3,6 +3,7 @@ import { CgPlayButton } from "react-icons/cg"
 import './index.css'
 import Dvd from '../../components/Dvd'
 import axios from 'axios'
+import { Link } from 'react-router'
 
 type Media = {
   background_color: string,
@@ -49,7 +50,6 @@ function Home() {
     () => { 
       return (<p>Nenhum filme</p>) 
     } 
-  
   } else {
     
       return (
@@ -65,9 +65,9 @@ function Home() {
               {medias[currentMediaId].description}
             </p>
             
-            <a className="glass button">
+            <Link className="glass button" to={`/player/${medias[currentMediaId].media_id}`}>
               Assistir agora <CgPlayButton className='icon'/>
-            </a>
+            </Link>
           </header>
 
           <div className='dvds-wrapper'>

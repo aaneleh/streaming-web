@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './index.css'
 import { CgPlayButton } from "react-icons/cg"
 import axios from 'axios'
+import { Link } from 'react-router'
 
 type Media = {
   background_color: string,
@@ -54,12 +55,12 @@ function Catalog() {
         <div className='dvds-wrapper'>
           {
             medias.map(( (el, index) => {
-              return <div className='catalog-dvd glass'>
+              return <div className='catalog-dvd glass' key={index}>
                   <img src={`src/assets/${el.logo}`}></img>
                   <p className='description'>{el.description}</p>
-                  <a className="glass button">
+                  <Link className="glass button" to={`/player/${el.media_id}`}>
                     Assistir agora <CgPlayButton className='icon'/>
-                  </a>
+                  </Link>
                   <img className="poster" src={`src/assets/${el.poster}`}></img>                
                 </div>
             }))
