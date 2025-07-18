@@ -11,11 +11,9 @@ const connection = mysql.createConnection({
 })
 connection.connect();
 
-
-//SELECIONA TODOS
-router.get('/', async(req, res) => {
-
-    connection.query('SELECT * FROM media', function (error, results, fields) {
+//SELECIONA APENAS HEADLINERS
+router.get('/headliners', async(req, res) => {
+    connection.query('SELECT * FROM media WHERE headliner = 1', function (error, results, fields) {
         if (error) {
             console.log(error)
             return res.status(500).json({message: 'Erro listando filmes/séries'})
@@ -24,10 +22,21 @@ router.get('/', async(req, res) => {
     })
 })
 
-//SELECIONA APENAS HEADLINERS
-router.get('/headliners', async(req, res) => {
+//SELECIONA 1 PELO ID
+router.get('/:id', async(req, res) => {
+    connection.query('SELECT * FROM media WHERE media_id = ?', [req.params.id], function (error, results, fields) {
+        if (error) {
+            console.log(error)
+            return res.status(500).json({message: 'Filme não encontrado'})
+        } 
+        return res.status(200).json(results[0])
+    })
+})
 
-    connection.query('SELECT * FROM media WHERE headliner = 1', function (error, results, fields) {
+//SELECIONA TODOS
+router.get('/', async(req, res) => {
+
+    connection.query('SELECT * FROM media', function (error, results, fields) {
         if (error) {
             console.log(error)
             return res.status(500).json({message: 'Erro listando filmes/séries'})
