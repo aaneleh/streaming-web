@@ -49,17 +49,18 @@ router.get('/', async(req, res) => {
 router.post('/', async(req, res) => {
     let name = req.body.name
     let description = req.body.description
+    let folder = req.body.folder
     let source = req.body.source
-    let poster = req.body.poster
-    let logo = req.body.logo
+/*     let poster = req.body.poster
+    let logo = req.body.logo */
     let font_color = req.body.font_color
     let background_color = req.body.background_color
     let type = req.body.type
     let headliner = req.body.headliner
     const uid = uuidv4()
 
-    connection.query('INSERT INTO media VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [uid, name, description, source, poster, logo, font_color, background_color, type, headliner], function (error, results, fields) {
+    connection.query('INSERT INTO media VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            [uid, name, description, folder, source, font_color, background_color, type, headliner], function (error, results, fields) {
         if (error) {
             console.log(error)
             return res.status(500).json({message: 'Erro ao cadastrar mídia'})

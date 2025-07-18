@@ -10,9 +10,8 @@ type Media = {
   background_color: string,
   description: string,
   font_color: string,
-  logo: string,
   name: string,
-  poster:string,
+  folder: string,
   source: string,
   type: number,
   headliner: boolean
@@ -46,9 +45,8 @@ function Admin() {
       media_id: null,
       name: getValues("name"),
       description: getValues("description"),
+      folder: getValues("folder"),
       source: getValues("source"),
-      poster: getValues("poster"),
-      logo: getValues("logo"),
       font_color: getValues("font_color"),
       background_color: getValues("background_color"),
       type: 0,
@@ -59,9 +57,8 @@ function Admin() {
       const res = await axios.post(`${API}/media`, {
           name: newMedia.name,
           description: newMedia.description,
+          folder: newMedia.folder,
           source: newMedia.source,
-          poster: newMedia.poster,
-          logo: newMedia.logo,
           font_color: newMedia.font_color,
           background_color: newMedia.background_color,
           type: newMedia.type,
@@ -167,20 +164,15 @@ function Admin() {
             <input type="text" placeholder='Descrição' {...register("description")} />
           </div>
 
-          <div className="form-item">
-            <label htmlFor="source">Vídeo</label>
-            <input type="text" placeholder='Vídeo' {...register("source")} />
-          </div>
-
           <div className="form-row">
             <div className="form-item">
-              <label htmlFor="poster">Poster</label>
-              <input type="text" placeholder='Poster' {...register("poster")} />
+              <label htmlFor="poster">Pasta</label>
+              <input type="text" placeholder='Poster' {...register("folder")} />
             </div>
 
             <div className="form-item">
-              <label htmlFor="logo">Logo</label>
-              <input type="text" placeholder='Logo' {...register("logo")} />
+              <label htmlFor="logo">Vídeo</label>
+              <input type="text" placeholder='Logo' {...register("source")} />
             </div>
           </div>
 
@@ -218,9 +210,8 @@ function Admin() {
                   <p className='media-table-cell'>{el.media_id}</p>
                   <p className='media-table-cell'>{el.name}</p>
                   <div className='media-table-cell vertical-cell'>
+                    <p>{el.folder}</p>
                     <p>{el.source}</p>
-                    <p>{el.poster}</p>
-                    <p>{el.logo}</p>
                   </div>
                   <div className='media-table-cell vertical-cell'>
                     <p>{el.background_color}</p>

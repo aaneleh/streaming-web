@@ -3,17 +3,17 @@ import { useParams } from "react-router";
 import axios from 'axios'
 import { useState, useEffect } from 'react';
 
+
 type Media = {
+  media_id: string,
   background_color: string,
   description: string,
   font_color: string,
-  headliner: boolean,
-  logo: string,
-  media_id: string,
   name: string,
-  poster:string,
+  folder: string,
   source: string,
   type: number,
+  headliner: boolean
 }
 
 function Player() {
@@ -51,12 +51,8 @@ if(media == null ) {
   
     return (
       <section className='player'>
-        <p>
-            {media.media_id}
-        </p>
         <video controls width='800' >
-            <source src="/src/assets/Filme2.mkv" type="video/mp4"></source>
-            <source src="/src/assets/Filme1.mp4" type="video/mp4"></source>
+            <source src={`/src/assets/${media.folder}/${media.source}`} type="video/mp4"></source>
         </video>
       </section>
     )

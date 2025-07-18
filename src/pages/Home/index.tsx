@@ -5,17 +5,17 @@ import Dvd from '../../components/Dvd'
 import axios from 'axios'
 import { Link } from 'react-router'
 
+
 type Media = {
+  media_id: string,
   background_color: string,
   description: string,
   font_color: string,
-  headliner: boolean,
-  logo: string,
-  media_id: string,
   name: string,
-  poster:string,
+  folder: string,
   source: string,
   type: number,
+  headliner: boolean
 }
 
 function Home() {
@@ -54,12 +54,12 @@ function Home() {
     
       return (
         <section className='home' style={{'backgroundColor': medias[currentMediaId].background_color}}>
-        <img src={`src/assets/${medias[currentMediaId].poster}`} className="poster"/>
+        <img src={`src/assets/${medias[currentMediaId].folder}/poster.jpg`} className="poster"/>
 
         <div className="content">
           <header className='info'>
 
-            <img src={`src/assets/${medias[currentMediaId].logo}`} className="logo"/>
+            <img src={`src/assets/${medias[currentMediaId].folder}/logo.png`} className="logo"/>
             
             <p className="description" style={{'color': medias[currentMediaId].font_color}}>
               {medias[currentMediaId].description}
@@ -75,7 +75,7 @@ function Home() {
                 medias == null ? '' :
                   medias.map(( (el, index) => {
                     return <div onClick={(()=> setCurrentMediaId(index))}>
-                        <Dvd  logo={el.logo} color={el.background_color} status={index == currentMediaId}></Dvd>
+                        <Dvd logo={`src/assets/${medias[currentMediaId].folder}/logo.png`} color={el.background_color} status={index == currentMediaId}></Dvd>
                       </div>
                   }))
                 }

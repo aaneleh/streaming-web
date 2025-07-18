@@ -4,17 +4,17 @@ import { CgPlayButton } from "react-icons/cg"
 import axios from 'axios'
 import { Link } from 'react-router'
 
+
 type Media = {
+  media_id: string,
   background_color: string,
   description: string,
   font_color: string,
-  headliner: boolean,
-  logo: string,
-  media_id: string,
   name: string,
-  poster:string,
+  folder: string,
   source: string,
   type: number,
+  headliner: boolean
 }
 
 function Catalog() {
@@ -56,12 +56,12 @@ function Catalog() {
           {
             medias.map(( (el, index) => {
               return <div className='catalog-dvd glass' key={index}>
-                  <img src={`src/assets/${el.logo}`}></img>
+                  <img src={`src/assets/${el.folder}/logo.png`}></img>
                   <p className='description'>{el.description}</p>
                   <Link className="glass button" to={`/player/${el.media_id}`}>
                     Assistir agora <CgPlayButton className='icon'/>
                   </Link>
-                  <img className="poster" src={`src/assets/${el.poster}`}></img>                
+                  <img className="poster" src={`src/assets/${el.folder}/poster.jpg`}></img>                
                 </div>
             }))
           }
