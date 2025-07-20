@@ -8,9 +8,7 @@ type Form = {
     password: string
 }
 
-function Login() {
-
-    let navigate = useNavigate();
+function Login({ setToken }) {
 
     const API =  import.meta.env.VITE_API
 
@@ -21,8 +19,7 @@ function Login() {
                 user_name: getValues("user"),
                 password: getValues("password")
             })
-            console.log('res', res.data.message)
-            if(res.status == 200) navigate('/')
+            if(res.status == 200) setToken(res.data.token)
         } catch(err){
             console.log('err', err.response.data.message)
         }
@@ -60,4 +57,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Login;
