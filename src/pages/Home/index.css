@@ -1,62 +1,44 @@
+@import "tailwindcss";
+
 section {
-  background-color: #FF7616;
-  display: flex;
-  justify-content: center;
+  @apply flex justify-center;
 }
 
 @media screen and (min-width: 1004px) {
   section {
-    justify-content: flex-end;
-    padding: 0 10dvh;
+    @apply justify-end px-[10dvh];
   }
 }
 
-.home .poster {
-  position: absolute;
-  top: 0;
-  left:0;
-  margin: 0;
-  padding: 0;
-  height: 100dvh;
-  object-fit: cover;
-}
 
-.home .content {
-  width: 800px;
-  max-width: 80dvw;
-  min-height: 100dvh;
-  padding: 10dvh 0;
+.home {
 
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+  & .content {
+    @apply w-[800px] max-w-[80dvw] min-h-screen py-[10dvh];
+    @apply relative z-10 flex flex-col justify-between;
+  }
 
-.home .info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-}
+  & .poster {
+    @apply absolute top-0 left-0 p-0 m-0 h-screen object-cover;
+  }
 
-.home .info .logo {
-  height: 200px;
-}
+  & .info {
+    @apply flex flex-col justify-center items-start gap-8 h-full;
+  
+    & .info-name {
+      @apply text-4xl font-bold uppercase
+    } 
 
-.home .info .description {
-  text-align: justify;
-  color: #000;
-}
+    & .info-description {
+      @apply text-justify;
+    }
 
-.home .info .button {
-  align-self: center;
-}
+    & .info-button {
+      @apply self-center;
+    }
+  }
 
-.home .dvds-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  & .dvds-wrapper {
+    @apply w-full flex flex-col gap-4;
+  }
 }

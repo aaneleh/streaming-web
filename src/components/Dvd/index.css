@@ -2,13 +2,16 @@
     position: relative;
     width: 100%;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
     opacity: 0.90;
     left: 0px;
+    height: 64px;
     transition: all 200ms ease;
 }
-.dvd .logo {
-    height: 80px;
-    padding: 16px;
+.dvd h2{
+    @apply capitalize;
 }
 .dvd::before{
     content: '';

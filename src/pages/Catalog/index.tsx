@@ -56,9 +56,9 @@ function Catalog() {
           {
             medias.map(( (el, index) => {
               return <div className='catalog-dvd glass' key={index}>
-                  <img src={`src/assets/${el.folder}/logo.png`}></img>
-                  <p className='description'>{el.description}</p>
-                  <Link className="glass button" to={`/player/${el.media_id}`}>
+                  <h2 className='catalog-name'>{el.name}</h2>
+                  <p className='catalog-description'>{el.description}</p>
+                  <Link className="catalog-button glass button" to={`/player/${el.media_id}`}>
                     Assistir agora <CgPlayButton className='icon'/>
                   </Link>
                   <img className="poster" src={`src/assets/${el.folder}/poster.jpg`}></img>                

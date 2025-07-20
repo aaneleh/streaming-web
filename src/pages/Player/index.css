@@ -1,8 +1,8 @@
+@import "tailwindcss";
+
 .player {
-    background-color: #000000;
-    min-height: 100dvh;
-    padding: 0;
+    @apply bg-black min-h-screen p-0;
 }
 .player video {
-    width: 100%;
+    @apply w-full;
 }

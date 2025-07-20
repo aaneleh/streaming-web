@@ -59,13 +59,13 @@ function Home() {
         <div className="content">
           <header className='info'>
 
-            <img src={`src/assets/${medias[currentMediaId].folder}/logo.png`} className="logo"/>
-            
-            <p className="description" style={{'color': medias[currentMediaId].font_color}}>
+            <h2 className='info-name'>{medias[currentMediaId].name}</h2>
+
+            <p className="info-description" style={{'color': medias[currentMediaId].font_color}}>
               {medias[currentMediaId].description}
             </p>
             
-            <Link className="glass button" to={`/player/${medias[currentMediaId].media_id}`}>
+            <Link className="info-button glass button" to={`/player/${medias[currentMediaId].media_id}`}>
               Assistir agora <CgPlayButton className='icon'/>
             </Link>
           </header>
@@ -75,7 +75,7 @@ function Home() {
                 medias == null ? '' :
                   medias.map(( (el, index) => {
                     return <div onClick={(()=> setCurrentMediaId(index))}>
-                        <Dvd logo={`src/assets/${medias[currentMediaId].folder}/logo.png`} color={el.background_color} status={index == currentMediaId}></Dvd>
+                        <Dvd name={el.name} color={el.background_color} status={index == currentMediaId}></Dvd>
                       </div>
                   }))
                 }

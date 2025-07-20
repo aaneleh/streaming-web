@@ -1,107 +1,59 @@
+@import "tailwindcss";
+
 .catalog {
-  background-image: url(../../assets/woodBg.png);
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #000;
-  max-width: 100dvw;
-  min-height: 100dvh;
-  padding: 0;
+  @apply bg-right bg-no-repeat bg-cover bg-black;
+  @apply max-w-screen min-h-screen p-0;
 }
 
 .catalog .dvds-wrapper {
-  min-width: 100dvw;
-  padding: 80px 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  overflow: scroll;
-}
-
-.catalog-dvd {
-  height: 600px;
-  width: 400px;
-  min-width: 400px;
-  overflow: hidden;
-}
-
-.catalog-dvd {
-  position: relative;
-  width: 400px;
-  height: 600px;
-  top: 0px;
-  left:0px;
-  transition: all 200ms ease;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-
-} 
-
-.catalog-dvd .poster{
-  position: absolute;
-  top:0;
-  left:0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 1;
-}
-
-.catalog-dvd .description {
-  width: 90%;
-  text-align: left;
-}
-
-.catalog-dvd .button {
-  align-self: center;
-}
-
-.catalog-dvd *{
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 200ms ease;
-}
-
-.catalog-dvd:hover * {
-  opacity: 1;
-}
-
-.catalog-dvd:hover{
-  top: -20px
-}
-
-
-.catalog-dvd::after {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  opacity: 0;
-  left:0;
-  top: -40px;
-  transition: all 200ms ease;
-
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(20px);
-  background-color: rgba(0,0,0,0.1);
-}
-.catalog-dvd:hover::after {
-  opacity: 1;
-  top:0;
+  @apply min-w-screen py-16 flex flex-col items-center gap-10 overflow-scroll;
 }
 
 @media screen and (min-width: 800px) {
   .catalog .dvds-wrapper {
-    padding: 0 20px;
-    flex-direction: row;
+    @apply px-4 flex-row;
+  }
+}
+
+.catalog-dvd {
+  @apply relative w-[400px] min-w-[400px] h-[600px] top-0 left-0 overflow-hidden;
+  @apply transition-all flex flex-col items-center justify-evenly;
+
+  &::after{
+    content: '';
+    @apply absolute top-[-40px] left-0 z-0 opacity-0 transition-all;
+    @apply w-full h-full bg-black/10 backdrop-blur-xs;
   }
 
-  .catalog-dvd:hover{
-    top: -40px
+  &:hover{
+    @apply top-[-20px];
+  }
+
+  &:hover::after{
+    @apply top-0 opacity-100;
+  }
+
+  &:hover *{
+    @apply opacity-100;
+  }
+
+  & *{
+    @apply z-1 opacity-0 transition-opacity;
+  }
+
+  & .catalog-name{
+    @apply uppercase text-4xl font-bold;
+  }
+
+  & .catalog-description {
+    @apply px-8;
+  }
+
+  & .catalog-button  {
+    align-self: center;
+  }
+
+  & .poster{
+    @apply absolute top-0 left-0 z-0 w-full h-full object-cover opacity-100;
   }
 }

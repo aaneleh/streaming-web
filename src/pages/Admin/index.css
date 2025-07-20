@@ -1,49 +1,48 @@
+@import "tailwindcss";
+
 .admin {
-  min-height: 100dvh;
-  background-image: url(../../assets/roomBg.png);
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #000;
+  @apply bg-black bg-cover bg-no-repeat bg-right min-h-screen;
+  @apply flex flex-col justify-start items-start gap-8 sm:p-[80px] pt-[80px] p-[20px];
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 80px;
-  align-items: flex-start;
-  gap: 40px;
+  & h2 {
+    @apply text-left uppercase py-2;
+  }
+
+  & .media-form {
+    @apply flex flex-col items-start gap-8;
+
+    & .form-row {
+      @apply flex flex-col sm:flex-row gap-8;
+    }
+
+  }
+
+
+  & .media-table {
+
+    & .media-table-header, .media-table-row {
+      @apply grid grid-cols-[0px_0px_1fr_0px_80px_80px] sm:grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr] gap-2;
+    }
+
+    & .media-table-row {
+      @apply py-4 border-b-white border-b-1;
+
+    }
+
+    & .table-cell {
+      @apply m-auto text-sm w-full overflow-hidden;
+
+      & input {
+        @apply scale-150;
+      }
+
+      & .icon {
+        @apply text-xl;
+      }
+    }
+
+  }
+
 }
 
-.media-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 40px;
-}
 
-.media-form .form-row {
-  display: flex;
-  gap: 40px;
-}
-
-.admin h2 {
-  text-align: left;
-  text-transform: uppercase;
-  padding: 8px 0;
-}
-
-.media-table-header, .media-table-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 80px 80px 80px;
-  column-gap: 12px;
-}
-
-.media-table-row {
-  padding: 12px 0;
-  border-bottom: 1px solid #fff;
-}
-
-.media-table-cell {
-  margin: auto;
-  font-size: 14px;
-}

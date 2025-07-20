@@ -195,35 +195,33 @@ function Admin() {
           <h2>Mídia</h2>
 
           <div className='media-table-header glass'>
-            <p className='media-table-cell'>ID</p>
-            <p className='media-table-cell'>Nome</p>
-            <p className='media-table-cell'>Arquivos</p>
-            <p className='media-table-cell'>Cores</p>
-            <p className='media-table-cell'>Tipo</p>
-            <p className='media-table-cell'>Headliner</p>
-            <p className='media-table-cell'>Ações</p>
+            <p className='table-cell'>ID</p>
+            <p className='table-cell'>Nome</p>
+            <p className='table-cell'>Arquivos</p>
+            <p className='table-cell'>Cores</p>
+            <p className='table-cell'>Headliner</p>
+            <p className='table-cell'>Ações</p>
           </div>
 
           {
             medias.map(( (el, index) => {
               return <div className='media-table-row' key={index}>
-                  <p className='media-table-cell'>{el.media_id}</p>
-                  <p className='media-table-cell'>{el.name}</p>
-                  <div className='media-table-cell vertical-cell'>
+                  <p className='table-cell'>{el.media_id}</p>
+                  <p className='table-cell'>{el.name}</p>
+                  <div className='table-cell'>
                     <p>{el.folder}</p>
                     <p>{el.source}</p>
                   </div>
-                  <div className='media-table-cell vertical-cell'>
+                  <div className='table-cell'>
                     <p>{el.background_color}</p>
                     <p>{el.font_color}</p>
                   </div>
-                  <p className='media-table-cell'> {el.type} </p>
-                  <div className='media-table-cell'> 
+                  <div className='table-cell'> 
                     <input type="checkbox" name="headliner" id="headliner" checked={el.headliner} onChange={() => setHeadliner(el.media_id, !el.headliner)}/>  
                   </div>
-                  <div className='media-table-cell'> 
-                    <p onClick={() => deleteMedia(el.media_id)}>
-                      <FiTrash />
+                  <div className='table-cell'> 
+                    <p  className='icon' onClick={() => deleteMedia(el.media_id)}>
+                      <FiTrash/>
                     </p>
                   </div>
                 </div>
