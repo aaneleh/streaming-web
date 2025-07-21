@@ -18,7 +18,6 @@ function Admin() {
         const res = await axios.get(`${API}/media`)
         const json = await res.data
 
-        console.log(json)
         setMedias(json)
 
       } catch(err){
@@ -56,8 +55,6 @@ function Admin() {
       
       const data = await res.data
 
-      console.log('res', data)
-
       if(res.status == 200) {
         newMedia.media_id = data.media_id
         setMedias([
@@ -82,15 +79,11 @@ function Admin() {
 
 
   const setHeadliner = async(media_id : string, headliner : boolean) => {
-      console.log('set ' + media_id)
-      console.log(' para ' + headliner)
 
       try{
         const res = await axios.patch(`${API}/media/${media_id}`, {
             headliner: headliner,
         })
-
-        console.log('res', res.data.message)
 
         if(res.status == 200) {
 
@@ -112,8 +105,6 @@ function Admin() {
       const res = await axios.delete(`${API}/media/${media_id}`)
       
       const data = await res.data
-
-      console.log('res', data)
 
       if(res.status == 200) {
 

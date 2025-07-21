@@ -16,10 +16,8 @@ function Catalog() {
     const getHeadliners = async() => {
       try{
         const res = await axios.get(`${API}/media`)
-        
         const data = await res.data
 
-        console.log(data)
         setMedias(data)
 
       } catch(err){

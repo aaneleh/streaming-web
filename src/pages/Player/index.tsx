@@ -15,7 +15,6 @@ function Player() {
             const res = await axios.get(`${API}/media/${id}`)
             const data = await res.data
 
-            console.log(data)
             setMedia(data)
             
         } catch(err){
@@ -24,9 +23,7 @@ function Player() {
     }
 
     useEffect(()=>{
-        console.log('awd')
         getSource()
-
     }, [])
 
 
