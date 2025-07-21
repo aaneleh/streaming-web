@@ -1,18 +1,14 @@
 import './index.css'
-import { useNavigate } from "react-router";
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import axios from 'axios'
+import { type Login } from '../../types/Login'
 
-type Form = {
-    user: string
-    password: string
-}
 
-function Login({ setToken }) {
+function Login( {setToken}) {
 
     const API =  import.meta.env.VITE_API
 
-    async function tryLogin(data: Form) {
+    async function tryLogin(data: Login) {
 
         try{
             const res = await axios.post(`${API}/login`, {
@@ -21,7 +17,7 @@ function Login({ setToken }) {
             })
             if(res.status == 200) setToken(res.data.token)
         } catch(err){
-            console.log('err', err.response.data.message)
+            console.log('err', err)
         }
     }
 
@@ -29,10 +25,9 @@ function Login({ setToken }) {
         register,
         getValues,
         handleSubmit,
-        formState: { errors },
-    } = useForm<Form>()
+    } = useForm<Login>()
 
-    const onSubmit: SubmitHandler<Form> = (data) => tryLogin(data)
+    const onSubmit: SubmitHandler<Login> = (data) => tryLogin(data)
 
   return (
     <section className='login'>

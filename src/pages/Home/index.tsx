@@ -4,19 +4,7 @@ import './index.css'
 import Dvd from '../../components/Dvd'
 import axios from 'axios'
 import { Link } from 'react-router'
-
-
-type Media = {
-  media_id: string,
-  background_color: string,
-  description: string,
-  font_color: string,
-  name: string,
-  folder: string,
-  source: string,
-  type: number,
-  headliner: boolean
-}
+import { type Media } from '../../types/Media';
 
 function Home() {
 

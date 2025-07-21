@@ -3,19 +3,8 @@ import { useForm, type SubmitHandler } from 'react-hook-form'
 import { FiTrash } from "react-icons/fi";
 import axios from 'axios'
 import './index.css'
+import { type Media } from '../../types/Media';
 
-
-type Media = {
-  media_id: string,
-  background_color: string,
-  description: string,
-  font_color: string,
-  name: string,
-  folder: string,
-  source: string,
-  type: number,
-  headliner: boolean
-}
 
 function Admin() {
 
@@ -87,7 +76,6 @@ function Admin() {
       register,
       getValues,
       handleSubmit,
-      formState: { errors },
   } = useForm<Media>()
 
   const onSubmit: SubmitHandler<Media> = (data) => newMedia(data)

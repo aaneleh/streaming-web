@@ -2,19 +2,7 @@ import './index.css'
 import { useParams } from "react-router";
 import axios from 'axios'
 import { useState, useEffect } from 'react';
-
-
-type Media = {
-  media_id: string,
-  background_color: string,
-  description: string,
-  font_color: string,
-  name: string,
-  folder: string,
-  source: string,
-  type: number,
-  headliner: boolean
-}
+import { type Media } from '../../types/Media';
 
 function Player() {
 
