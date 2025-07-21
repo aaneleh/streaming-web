@@ -19,9 +19,9 @@ const Layout = ({children}) => {
 
 function App(){
 
-    const [ token, setToken ] = useState()
+    const [ token, setToken ] = useState<string>()
 
-    const setLocalToken = (userToken) => {
+    const setLocalToken = (userToken : string) => {
         setToken(userToken)
         sessionStorage.setItem('token', JSON.stringify(userToken));
     }
