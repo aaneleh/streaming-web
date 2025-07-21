@@ -3,13 +3,9 @@ const router = express.Router()
 const mysql = require('mysql2')
 const { v4: uuidv4 } = require('uuid')
 
-const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-})
-connection.connect();
+const connection = require('./connection.cjs')
+
+connection.connect()
 
 //SELECIONA APENAS HEADLINERS
 router.get('/headliners', async(req, res) => {

@@ -5,6 +5,7 @@ const mysql = require('mysql2')
 const CryptoJS = require("crypto-js")
 const userRouter = require('./routes/user.cjs')
 const mediaRouter = require('./routes/media.cjs')
+const connection = require('./routes/connection.cjs')
 
 const app = express()
 
@@ -12,20 +13,8 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-
-const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-})
 connection.connect()
 
-/* //LOGIN
-app.get('/login', async(req, res) => {
-
-    return res.status(200).json({message: 'Login realizado com sucesso'})
-}) */
 
 app.post('/login', async(req, res) => {
 
