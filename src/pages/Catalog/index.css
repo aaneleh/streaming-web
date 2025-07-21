@@ -2,7 +2,7 @@
 
 .catalog {
   @apply bg-right bg-no-repeat bg-cover bg-black;
-  @apply max-w-screen min-h-screen p-0;
+  @apply max-w-screen h-screen p-0;
 }
 
 .catalog .dvds-wrapper {

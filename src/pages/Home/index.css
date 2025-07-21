@@ -19,7 +19,7 @@ section {
   }
 
   & .poster {
-    @apply absolute top-0 left-0 p-0 m-0 h-screen object-cover;
+    @apply absolute top-0 left-0 p-0 m-0 h-screen object-cover mask-r-from-80%;
   }
 
   & .info {

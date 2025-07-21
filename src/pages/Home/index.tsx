@@ -33,7 +33,6 @@ function Home() {
         
         const json = await res.data
 
-        console.log(json)
         setMedias(json)
 
       } catch(err){
@@ -74,7 +73,7 @@ function Home() {
               {
                 medias == null ? '' :
                   medias.map(( (el, index) => {
-                    return <div onClick={(()=> setCurrentMediaId(index))}>
+                    return <div onClick={(()=> setCurrentMediaId(index))} key={index}>
                         <Dvd name={el.name} color={el.background_color} status={index == currentMediaId}></Dvd>
                       </div>
                   }))
