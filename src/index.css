@@ -2,74 +2,55 @@
 
 @font-face {
   font-family: Mori;
+  font-weight: normal;
   src: url(assets/PPMori-Regular.otf);
+}
+
+@font-face {
+  font-family: Mori;
+  font-weight: bold;
+  src: url(assets/PPMori-SemiBold.otf);
 }
 
 :root {
   font-family: Mori, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-gray-900 text-gray-100;
 }
 
-#root{
-  padding: 0 !important;
-  max-width: 100dvw !important;
+h2 {
+  @apply font-bold uppercase;
 }
 
 .glass {
-  background-color: rgba(200,200,200,0.13);
-  border: 1px solid rgba(255,255,255,0.17);
-  backdrop-filter: blur(37px);
-  border-radius: 2px;
+  @apply bg-gray-200/15 backdrop-blur border-gray-200/20 border-1 rounded;
 }
 
 .button {
-  padding: 10px 20px;
-  display: flex;
-  cursor: pointer;
-  text-transform: uppercase;
+  @apply py-2 px-4 flex cursor-pointer uppercase items-center gap-2;
 }
 
-/* FORM */
-.form-item{
-  position: relative;
-  margin-top: 20px;
-}
-input {
-  border-bottom: 2px solid #fff;
-  outline: none;
-}
-input::placeholder{
-  opacity: 0; 
-  transition: opacity 200ms ease;
-}
-label {
-  pointer-events: none;
-  position: absolute;
-  text-transform: uppercase;
-/*   top: 0px; 
-  font-size: medium;
-*/
-  top: -18px;
-  font-size: small;
-  transition: top 200ms ease-out;
-}
+.form-item {
+  @apply relative mt-4;
 
-.form-item:has(input:focus) label,
-.form-item.filled label{
-  top: -18px;
-  font-size: small;
-}
+  & input {
+    @apply border-b-2 border-white outline-none;
+  }
 
-.form-item:has(input:focus) input::placeholder{
-  opacity: 1; 
+  & input::placeholder {
+    @apply opacity-0 transition-opacity;
+  }
+
+  & label {
+    @apply pointer-events-none absolute uppercase top-0 text-lg transition-all;
+  }
+
+  &:has(input:focus) label,
+  &:has(input:not(:placeholder-shown)) label {
+    @apply top-[-18px] text-base;
+  }
+
+  &:has(input:focus) input::placeholder{
+    @apply opacity-100;
+  }
 }
