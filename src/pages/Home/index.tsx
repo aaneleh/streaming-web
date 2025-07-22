@@ -46,7 +46,7 @@ function Home() {
         <div className="content">
           <header className='info'>
 
-            <h2 className='info-name'>{medias[currentMediaId].name}</h2>
+            <h2 className='info-name' style={{'color': medias[currentMediaId].font_color}}>{medias[currentMediaId].name}</h2>
 
             <p className="info-description" style={{'color': medias[currentMediaId].font_color}}>
               {medias[currentMediaId].description}
