@@ -5,7 +5,7 @@
 App para cadastro de vídeos disponíveis localmente para reproduzir na web em qualquer dispositivo conectado na mesma rede.
 Usuários administradores tem controle de adicionar novos vídeos e alterar os vídeos em destaque.
 
-##### Front-end
+#### Front-end
 
 - <img width="24px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" /> React
 
@@ -15,7 +15,7 @@ Usuários administradores tem controle de adicionar novos vídeos e alterar os v
 
 - <img width="24px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/axios/axios-plain.svg" /> Axios
 
-##### Back-end
+#### Back-end
                     
 - <img width="24px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" /> Express
           
@@ -25,3 +25,5 @@ Usuários administradores tem controle de adicionar novos vídeos e alterar os v
 
 - Assistir e navegar pelos diferentes vídeos cadastrados
 - Administradores podem cadastrar, colocar como destaque e excluir vídeos 
+
+![Página principal do app com poster, título e sinópese do filme Indiana Jones (2023)](./headliners.png)
