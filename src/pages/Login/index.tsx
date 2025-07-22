@@ -18,6 +18,7 @@ function Login( {setToken}) {
             if(res.status == 200) setToken(res.data.token)
         } catch(err){
             console.log('err', err)
+            alert(err.response.data.message)
         }
     }
 
