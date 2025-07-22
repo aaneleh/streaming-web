@@ -42,7 +42,7 @@ function Login( {setToken}) {
 
             <div className="form-item">
                 <label htmlFor="password">Senha</label>
-                <input type="pass" placeholder='Senha' {...register("password")}/>
+                <input type="password" placeholder='Senha' {...register("password")}/>
             </div>
 
             <input type="submit" value="Entrar" className='glass button' />
